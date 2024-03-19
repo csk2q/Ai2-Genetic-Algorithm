@@ -2,6 +2,7 @@ namespace Ai2_Genetic_Algorithm.Data;
 
 public static class TestData
 {
+    //Make enum? name = capacity?
     public static readonly List<Room> Rooms = [
         new Room("Slater 003", 45),
         new Room("Roman 216", 30),
@@ -35,7 +36,14 @@ public struct Room(string name, int capacity)
 {
     public readonly string name = name;
     public readonly int capacity = capacity;
-    public Dictionary<TimeSlot, Room> timeSlots = [];
+}
+
+public class Activity(string name, int expEnroll, Facilitators[] preferred, Facilitators[] other)
+{
+    public readonly string name = name;
+    public readonly int expectedEnrollment = expEnroll;
+    public readonly Facilitators[] preferredFacilitators = preferred;
+    public readonly Facilitators[] otherFacilitators = other;
 }
 
 
