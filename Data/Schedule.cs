@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Ai2_Genetic_Algorithm.Data;
 
 using Data;
@@ -33,11 +35,11 @@ public class Schedule
         {
             allSlots[i] = new List<Slot>[TimeSlotCount];
             for (int j = 0; j < TimeSlotCount; j++)
-                allSlots[i][j] = new List<Slot>(1);
+                allSlots[i][j] = new List<Slot>();
         }
     }
 
-    public static Schedule RandomizedSchedule(Random rand)
+    public static Schedule RandomizedSchedule(in Random rand)
     {
         Schedule sch = new();
 
@@ -50,6 +52,84 @@ public class Schedule
         }
 
         return sch;
+    }
+
+    public static List<ActivityData> Reproduce(in Schedule father, in Schedule mother, in Random random)
+    {
+        //Evaluation > Reproduction > Crossover > Mutation
+        //TODO Continue here
+
+        int splitIndex = random.Next(0, Activities.Count - 1);
+        var fatherSimple = father.Compact();
+        var motherSimple = mother.Compact();
+
+        var childSimple = fatherSimple[..splitIndex];
+        childSimple.AddRange(motherSimple[splitIndex..]);
+
+        // Activity count should be unchanged.
+        // Debug.Assert(childSimple.Count == Activities.Count,
+        //     $"Activity count is incorrect! Expected {Activities.Count} but got {childSimple.Count}");
+
+        return childSimple;
+    }
+
+    public static List<ActivityData> Mutate(List<ActivityData> activityData, in Random random)
+    {
+        //TODO Continue here
+        int removeIndex = random.Next(0, Activities.Count);
+
+        switch (random.Next(3))
+        {
+            case 0: // facilitator
+                activityData[removeIndex] = activityData[removeIndex] with {facilitator = (Facilitator)random.Next(0, FacilitatorCount)};
+                break;
+            
+            case 1: // timeslotId
+                activityData[removeIndex] = activityData[removeIndex] with { timeslotId = random.Next(0, TimeSlotCount) };
+                break;
+            
+            case 2: // roomId
+                activityData[removeIndex] = activityData[removeIndex] with { roomId = random.Next(0, Rooms.Count) };
+                break;
+        }
+
+        return activityData;
+    }
+
+    public record ActivityData(Activity act, Facilitator facilitator, int timeslotId, int roomId);
+
+    public List<ActivityData> Compact() => Compact(this);
+
+    public static List<ActivityData> Compact(in Schedule schedule)
+    {
+        List<ActivityData> actData = new();
+
+        //Room
+        for (int roomId = 0; roomId < schedule.allSlots.Length; roomId++)
+        {
+            //Timeslot
+            for (int timeslotId = 0; timeslotId < schedule.allSlots[roomId].Length; timeslotId++)
+            {
+                foreach (Slot slot in schedule.allSlots[roomId][timeslotId])
+                {
+                    actData.Add(new(slot.activity, slot.facilitator, timeslotId, roomId));
+                }
+            }
+        }
+
+        return actData;
+    }
+
+    public static Schedule Expand(in List<ActivityData> activityData)
+    {
+        Schedule schedule = new();
+
+        foreach (var actData in activityData)
+        {
+            schedule.allSlots[actData.roomId][actData.timeslotId].Add(new Slot(actData.act, actData.facilitator));
+        }
+
+        return schedule;
     }
 
     public double Fitness()
@@ -176,41 +256,41 @@ public class Schedule
             fitness -= 0.4;
         else if (facilitatorLoad[Tyler] >= 2)
             fitness -= 0.4;
-        
-        
+
+
         // Activity-specific adjustments:
         // • The 2 sections of SLA 101 are more than 4 hours apart: + 0.5
         // • Both sections of SLA 101 are in the same time slot: -0.5
-        
+
         // • The 2 sections of SLA 191 are more than 4 hours apart: + 0.5
         // • Both sections of SLA 191 are in the same time slot: -0.5
-        
-        //TODO continue with the below.
+
         // • A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
         //   ◦ In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
         //      ▪ It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
-        
+
         // • A section of SLA 191 and a section of SLA 101 are taught separated by 1 hour (e.g., 10 AM & 12:00 Noon): + 0.25
         // • A section of SLA 191 and a section of SLA 101 are taught in the same time slot: -0.25
-        
+
         var SLA101Diff = TimeDiff(activityToTimeSlot[SLA101A], activityToTimeSlot[SLA101B]);
         if (SLA101Diff > 4)
             fitness += 0.5;
         else if (SLA101Diff == 0)
             fitness -= 0.5;
-        
+
         var SLA191Diff = TimeDiff(activityToTimeSlot[SLA191A], activityToTimeSlot[SLA191B]);
         if (SLA191Diff > 4)
             fitness += 0.5;
         else if (SLA191Diff == 0)
             fitness -= 0.5;
-        
+
         var SLA191Ato101ADiff = TimeDiff(activityToTimeSlot[SLA191A], activityToTimeSlot[SLA101A]);
         var SLA191Ato101BDiff = TimeDiff(activityToTimeSlot[SLA191A], activityToTimeSlot[SLA101B]);
         var SLA191Bto101ADiff = TimeDiff(activityToTimeSlot[SLA191B], activityToTimeSlot[SLA101A]);
         var SLA191Bto101BDiff = TimeDiff(activityToTimeSlot[SLA191B], activityToTimeSlot[SLA101B]);
 
-        var Check191to101 = (int timeDiff, Activity A, Activity B) => {
+        var Check191to101 = (int timeDiff, Activity A, Activity B) =>
+        {
             if (timeDiff == 1)
             {
                 if (activityToRoom[A].name.StartsWith("Roman"))
@@ -240,10 +320,6 @@ public class Schedule
         Check191to101(SLA191Ato101BDiff, SLA191A, SLA101B);
         Check191to101(SLA191Bto101ADiff, SLA191B, SLA101A);
         Check191to101(SLA191Bto101BDiff, SLA191B, SLA101B);
-
-        //TODO pick back up here.
-
-        
 
         return fitness;
     }

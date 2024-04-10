@@ -71,12 +71,17 @@ public struct Room(string name, int capacity)
     public readonly int capacity = capacity;
 }
 
-public class Activity(string name, int expEnroll, Facilitator[] preferred, Facilitator[] other)
+public record Activity(string name, int expectedEnrollment, Facilitator[] preferred, Facilitator[] other)
 {
     public readonly string name = name;
-    public readonly int expectedEnrollment = expEnroll;
+    public readonly int expectedEnrollment = expectedEnrollment;
     public readonly Facilitator[] preferredFacilitators = preferred;
     public readonly Facilitator[] otherFacilitators = other;
+
+    public override string ToString()
+    {
+        return name;
+    }
 }
 
 
