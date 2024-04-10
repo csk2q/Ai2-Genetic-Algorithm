@@ -1,4 +1,5 @@
-﻿using Ai2_Genetic_Algorithm.Data;
+﻿using System.Diagnostics;
+using Ai2_Genetic_Algorithm.Data;
 
 namespace Ai2_Genetic_Algorithm;
 
@@ -47,27 +48,123 @@ class Program
         Console.WriteLine(schdule);
         Console.WriteLine(schdule!.Fitness());*/
         
-        
         GA();
         
 
         Console.WriteLine("Program exit.");
     }
 
+    //Schedule, fitness
+    private Generic.PriorityQueue<Schedule, double> population;
     private void GA()
     {
-        Random rand = new();
+        const int popSize = 1000;
         
-        //Schedule, fitness
-        PriorityQueue<Schedule, double> population = new(500);
-        for (int i = 0; i < 500; i++)
+        Random rand = new();
+        population = new(popSize);
+        double mutationRate = 0.1;
+        
+        //Create first gen
+        for (int i = 0; i < popSize; i++)
         {
             var sch = Schedule.RandomizedSchedule(rand);
             population.Enqueue(sch, sch.Fitness());
         }
 
-        var result = Schedule.Reproduce(population.Dequeue(), population.Dequeue(), rand);
+        //Evaluation > Reproduction > Crossover > Mutation
+        Stopwatch stopwatch = Stopwatch.StartNew();
+        ulong fullCounter = 0;
+        int counter = 0;
+        var growthPercent = double.MinValue;
+        double lastMaxFit = GetMostFit(out _);
+        do
+        {
+            
+            
+            
+            //Remove least fit
+            population.Dequeue();
+            
+            // Reproduce / Crossover
+            var popCount = population._nodes.Length;
+            var father = population._nodes[rand.Next(population._size)].Element;
+            var mother = population._nodes[rand.Next(population._size)].Element;
+            var child = Schedule.Reproduce(father, mother, rand);
+            
+            // Mutate
+            if (rand.NextDouble() < mutationRate)
+            {
+                child = Schedule.Mutate(child, rand);
+            }
+            
+            // Add to population
+            var childSchedule = Schedule.Expand(child);
+            population.Enqueue(childSchedule, childSchedule.Fitness());
 
+            fullCounter++;
+            counter++;
+            if (counter > 100)
+            {
+                rand = new Random();
+                counter = 0;
+            }
+
+            if (fullCounter % popSize == popSize - 1)
+            {
+                //Evaluate
+                var maxFit = GetMostFit(out _);
+
+                if (lastMaxFit == 0)
+                {
+                    Console.WriteLine("Avoiding divide by zero!");
+                    lastMaxFit = -0.1;
+                }
+                
+                growthPercent = (maxFit - lastMaxFit) / Math.Abs(lastMaxFit);
+
+                
+                stopwatch.Stop();
+                Console.WriteLine($"Completed Generation {fullCounter/popSize} in {stopwatch.Elapsed.TotalMilliseconds} ms");
+                Console.WriteLine($"Improvement: {maxFit - lastMaxFit}, {growthPercent}%, Max fit: {maxFit}, Prev max fit: {lastMaxFit}");
+
+                if (growthPercent > 0)
+                    mutationRate *= 0.9;
+                Console.WriteLine($"Mutation rate: {mutationRate:G70}");
+
+                if (growthPercent < 0.01 && fullCounter/popSize > 100)
+                    break;
+                
+                lastMaxFit = maxFit;
+                stopwatch.Restart();
+            }
+            
+        } while (true);
+
+        Console.WriteLine();
+        Console.WriteLine("Max fit:");
+        _ = GetMostFit(out var schedule);
+        // Console.WriteLine(schedule);
+        schedule.Compact().ForEach(Console.WriteLine);
+        
+
+
+    }
+
+    private double GetMostFit(out Schedule schedule)
+    {
+        double maxFit = double.MinValue;
+        schedule = null!;
+        
+        foreach (var populationUnorderedItem in population.UnorderedItems)
+        {
+            if (populationUnorderedItem.Priority > maxFit)
+            {
+                schedule = populationUnorderedItem.Element;
+                maxFit = populationUnorderedItem.Priority;
+            }
+        }
+
+        return maxFit;
     }
     
 }
