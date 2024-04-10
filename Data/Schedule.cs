@@ -56,38 +56,53 @@ public class Schedule
 
     public static List<ActivityData> Reproduce(in Schedule father, in Schedule mother, in Random random)
     {
-        //Evaluation > Reproduction > Crossover > Mutation
-        //TODO Continue here
-
         int splitIndex = random.Next(0, Activities.Count - 1);
         var fatherSimple = father.Compact();
         var motherSimple = mother.Compact();
 
-        var childSimple = fatherSimple[..splitIndex];
-        childSimple.AddRange(motherSimple[splitIndex..]);
+        Dictionary<string, ActivityData> childDictionary = [];
+
+        foreach (var fatherData in fatherSimple[..splitIndex])
+        {
+            childDictionary.Add(fatherData.act.name, fatherData);
+        }
+
+        for (int i = 0; i < Activities.Count - splitIndex;)
+        {
+            foreach (var motherData in motherSimple)
+            {
+                if (childDictionary.TryAdd(motherData.act.name, motherData))
+                    i++;
+            }
+        }
+
+        var childSimple = childDictionary.Values.ToList();
 
         // Activity count should be unchanged.
-        // Debug.Assert(childSimple.Count == Activities.Count,
-        //     $"Activity count is incorrect! Expected {Activities.Count} but got {childSimple.Count}");
+        Debug.Assert(childSimple.Count == Activities.Count,
+            $"Activity count is incorrect! Expected {Activities.Count} but got {childSimple.Count}");
 
         return childSimple;
     }
 
     public static List<ActivityData> Mutate(List<ActivityData> activityData, in Random random)
     {
-        //TODO Continue here
         int removeIndex = random.Next(0, Activities.Count);
 
         switch (random.Next(3))
         {
             case 0: // facilitator
-                activityData[removeIndex] = activityData[removeIndex] with {facilitator = (Facilitator)random.Next(0, FacilitatorCount)};
+                activityData[removeIndex] = activityData[removeIndex] with
+                {
+                    facilitator = (Facilitator)random.Next(0, FacilitatorCount)
+                };
                 break;
-            
+
             case 1: // timeslotId
-                activityData[removeIndex] = activityData[removeIndex] with { timeslotId = random.Next(0, TimeSlotCount) };
+                activityData[removeIndex] =
+                    activityData[removeIndex] with { timeslotId = random.Next(0, TimeSlotCount) };
                 break;
-            
+
             case 2: // roomId
                 activityData[removeIndex] = activityData[removeIndex] with { roomId = random.Next(0, Rooms.Count) };
                 break;
