@@ -5,7 +5,54 @@ namespace Ai2_Genetic_Algorithm;
 
 class Program
 {
-    static void Main(string[] args) => new Program().Run();
+    static void Main(string[] args) //=> new Program().Run();
+    {
+        Thread infoThread = new Thread(() => {
+            while (true)
+            {
+                string input = Console.ReadLine() ?? "";
+                if(mostSchedule is not null)
+                {
+                    Console.WriteLine(updateTime);
+                    Console.WriteLine($"Max fit: {mostFit}");
+                    if (input.Length > 0)
+                    {
+                        Console.WriteLine(mostSchedule);
+                        mostSchedule.Compact().ForEach(Console.WriteLine);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No data yet.");
+                }
+            }
+            
+        });
+        infoThread.Start();
+
+
+        for (int i = 0; i < 10; i++)
+        {
+            new Thread(() =>
+            {
+                try
+                {
+                    new Program().Run();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                
+            }).Start();
+        }
+        
+        
+    }
+    
+    static double mostFit = Double.MinValue;
+    static Schedule? mostSchedule = null!;
+    static DateTime updateTime = DateTime.UnixEpoch;
 
     void Run()
     {
@@ -47,11 +94,21 @@ class Program
         Console.WriteLine();
         Console.WriteLine(schdule);
         Console.WriteLine(schdule!.Fitness());*/
+
         
-        GA();
         
+        while (mostFit < 0)
+        {
+            GA();
+        }
+
+
+        Console.WriteLine($"Max fit: {mostFit}");
+        Console.WriteLine(mostSchedule);
+        mostSchedule.Compact().ForEach(Console.WriteLine);
 
         Console.WriteLine("Program exit.");
+        Console.ReadLine();
     }
 
     //Schedule, fitness
@@ -124,13 +181,13 @@ class Program
 
                 
                 stopwatch.Stop();
-                Console.WriteLine($"Completed Generation {fullCounter/popSize} in {stopwatch.Elapsed.TotalMilliseconds} ms");
-                Console.WriteLine($"Improvement: {maxFit - lastMaxFit}, {growthPercent}%, Max fit: {maxFit}, Prev max fit: {lastMaxFit}");
+                //DEBUG LOG
+                // Console.WriteLine($"Completed Generation {fullCounter/popSize} in {stopwatch.Elapsed.TotalMilliseconds} ms");
+                // Console.WriteLine($"Improvement: {maxFit - lastMaxFit}, {growthPercent}%, Max fit: {maxFit}, Prev max fit: {lastMaxFit}");
+                // Console.WriteLine($"Mutation rate: {mutationRate:G70}");
 
                 if (growthPercent > 0)
                     mutationRate *= 0.9;
-                Console.WriteLine($"Mutation rate: {mutationRate:G70}");
-
                 if (growthPercent < 0.01 && fullCounter/popSize > 100)
                     break;
                 
@@ -140,14 +197,21 @@ class Program
             
         } while (true);
 
-        Console.WriteLine();
-        Console.WriteLine("Max fit:");
-        _ = GetMostFit(out var schedule);
+        var mostFit = GetMostFit(out var schedule);
+        //DEBUG LOG
+        // Console.WriteLine();
+        // Console.WriteLine($"Max fit: {mostFit}");
         // Console.WriteLine(schedule);
-        schedule.Compact().ForEach(Console.WriteLine);
+        // schedule.Compact().ForEach(Console.WriteLine);
         
-
-
+        
+        //DEBUG LOGS BELOW
+        if (mostFit > Program.mostFit)
+        {
+            Program.mostFit = mostFit;
+            Program.mostSchedule = schedule;
+            Program.updateTime = DateTime.Now;
+        }
     }
 
     private double GetMostFit(out Schedule schedule)
