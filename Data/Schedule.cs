@@ -150,17 +150,20 @@ public class Schedule
     public double Fitness()
     {
         // Note: Implementation focuses on aligning closely the requirement's wording over performance.
-        // TODO combine checks to reduce number of passes over the schedule
-
-        Dictionary<Activity, TimeSlot> activityToTimeSlot = [];
-        Dictionary<Activity, Room> activityToRoom = [];
 
 
         // For each activity, fitness starts at 0.
         double fitness = 0;
+        
+        //Facilitator load data
         Dictionary<Facilitator, int> facilitatorLoad = [];
         foreach (var faclitator in Enum.GetValues<Facilitator>())
             facilitatorLoad[faclitator] = 0;
+        
+        //Mapping data
+        Dictionary<Activity, TimeSlot> activityToTimeSlot = [];
+        Dictionary<Activity, Room> activityToRoom = [];
+        
 
         // For every room
         for (int roomIndex = 0; roomIndex < allSlots.Length; roomIndex++)
@@ -171,8 +174,9 @@ public class Schedule
             foreach (var slots in allSlots[roomIndex])
             {
                 // Activity is scheduled at the same time in the same room as another of the activities: -0.5
-                // -0.5 for every extra activity in a room at the same time.
-                fitness -= (slots.Count - 1) * -0.5;
+                // Eg: 2 activities in the same room is -1.0 to fitness
+                if(slots.Count > 0)
+                    fitness -= slots.Count * 0.5;
 
                 //For each slot in the timeslot
                 foreach (var slot in slots)
