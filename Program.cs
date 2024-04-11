@@ -58,11 +58,11 @@ class Program
     private Generic.PriorityQueue<Schedule, double> population;
     private void GA()
     {
-        const int popSize = 1000;
+        const int popSize = 500;
         
         Random rand = new();
         population = new(popSize);
-        double mutationRate = 0.1;
+        double mutationRate = 0.01; // 1%
         
         //Create first gen
         for (int i = 0; i < popSize; i++)
@@ -79,9 +79,6 @@ class Program
         double lastMaxFit = GetMostFit(out _);
         do
         {
-            
-            
-            
             //Remove least fit
             population.Dequeue();
             
@@ -124,12 +121,13 @@ class Program
 
                 
                 stopwatch.Stop();
-                Console.WriteLine($"Completed Generation {fullCounter/popSize} in {stopwatch.Elapsed.TotalMilliseconds} ms");
-                Console.WriteLine($"Improvement: {maxFit - lastMaxFit}, {growthPercent}%, Max fit: {maxFit}, Prev max fit: {lastMaxFit}");
+                Console.WriteLine($"Completed Generation {fullCounter/popSize:G6} in {stopwatch.Elapsed.TotalMilliseconds:G6} ms");
+                Console.WriteLine($"Improvement: {maxFit - lastMaxFit:G6}, {growthPercent:G6}%, Max fit: {maxFit}, Prev max fit: {lastMaxFit:G6}");
 
+                // Reduce mutation rate if improving
                 if (growthPercent > 0)
                     mutationRate *= 0.9;
-                Console.WriteLine($"Mutation rate: {mutationRate:G70}");
+                Console.WriteLine($"Mutation rate: {mutationRate:G6}");
 
                 if (growthPercent < 0.01 && fullCounter/popSize > 100)
                     break;
