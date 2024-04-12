@@ -64,7 +64,7 @@ public class Schedule
 
         Dictionary<string, ActivityData> sonDictionary = [];
         Dictionary<string, ActivityData> daughterDictionary = [];
-        
+
         // Add data from father
         for (int i = 0; i < fatherSimple.Count; i++)
         {
@@ -219,6 +219,9 @@ public class Schedule
             }
         }
 
+        List<Slot> previousSlots = [];
+        List<Slot> currentSlots = [];
+
         //For every timeslot
         for (int timeslotId = 0; timeslotId < TimeSlotCount; timeslotId++)
         {
@@ -239,6 +242,7 @@ public class Schedule
                     // Keep track of mappings
                     activityToTimeSlot.Add(slot.activity, (TimeSlot)timeslotId);
                     activityToRoom.Add(slot.activity, Rooms[roomIndex]);
+                    currentSlots.Add(slot);
                 }
             }
 
@@ -252,6 +256,40 @@ public class Schedule
                 else if (activityCount > 1)
                     fitness -= 0.2;
             }
+
+
+            // Facilitator _consecutive_ load
+            // ◦ If any facilitator scheduled for _consecutive_ time slots: Same rules as for SLA 191 and SLA 101 in consecutive time slots—see below.
+            //      A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
+            //       ◦ In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
+            //           ▪ It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
+            if (timeslotId > 0) // First slot does not have a previous
+            {
+                //Search current and previous timeslot for consecutive facilitator assignments 
+                foreach (var curSlot in currentSlots)
+                foreach (var prevSlot in previousSlots)
+                    if (curSlot.facilitator == prevSlot.facilitator)
+                    {
+                        fitness += 0.5;
+
+                        // Check if one class is in Roman or Beach and the other is not
+                        if (curSlot.activity.name.StartsWith("Roman"))
+                        {
+                            if (!prevSlot.activity.name.StartsWith("Roman"))
+                                fitness -= 0.4;
+                        }
+                        else if (curSlot.activity.name.StartsWith("Beach"))
+                        {
+                            if (!prevSlot.activity.name.StartsWith("Beach"))
+                                fitness -= 0.4;
+                        }
+                    }
+            }
+
+
+            // Move slots back and reset current
+            previousSlots = currentSlots;
+            currentSlots = [];
         }
 
 
@@ -260,14 +298,14 @@ public class Schedule
         // ◦ Facilitator is scheduled to oversee 1 or 2 activities*: -0.4
         //      ▪ Exception: Dr. Tyler is committee chair and has other demands on his time.
         //          *No penalty if he’s only required to oversee < 2 activities.
-        
+
         // TODO Ask if facilitator checking is correct?
         // Optimal is a facilitator teaching 3 classes and Tyler teaching 1 or 0?
 
         // Get list of facilitator minus Dr. Tyler
         var normalFacilitators = Enum.GetValues<Facilitator>().ToList();
         normalFacilitators.Remove(Facilitator.Tyler);
-        
+
         foreach (var facilitator in normalFacilitators)
         {
             if (facilitatorLoad[facilitator] > 4)
@@ -281,14 +319,6 @@ public class Schedule
             fitness -= 0.4;
         else if (facilitatorLoad[Tyler] >= 2)
             fitness -= 0.4;
-        
-        // Facilitator load continued
-        // ◦ If any facilitator scheduled for _consecutive_ time slots: Same rules as for SLA 191 and SLA 101 in consecutive time slots—see below.
-        //      A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
-        //       ◦ In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
-        //           ▪ It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
-
-        //TODO implement the above check?
 
 
         // Activity-specific adjustments:
@@ -332,7 +362,7 @@ public class Schedule
             if (timeDiff == 1)
             {
                 fitness += 0.5;
-                
+
                 // Check if one class is in Roman or Beach and the other is not
                 if (activityToRoom[A].name.StartsWith("Roman"))
                 {
@@ -346,7 +376,7 @@ public class Schedule
                 }
             }
             // A time difference of two means one hour gap between classes.
-            else if (timeDiff == 2) 
+            else if (timeDiff == 2)
             {
                 fitness += 0.25;
             }
