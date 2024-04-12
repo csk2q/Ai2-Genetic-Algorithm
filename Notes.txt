@@ -177,3 +177,197 @@ ActivityData { act = SLA451, facilitator = Singer, timeslotId = 5, roomId = 4 }
 ActivityData { act = SLA101A, facilitator = Banks, timeslotId = 3, roomId = 5 }
 
 
+Improvement: 0, 0%, Max fit: 12.249999999999991, Prev max fit: 12.25
+Mutation rate: 0.00254187
+
+Max fit:
+ActivityData { act = SLA304, facilitator = Banks, timeslotId = 0, roomId = 0 }
+ActivityData { act = SLA394, facilitator = Singer, timeslotId = 1, roomId = 0 }
+ActivityData { act = SLA101B, facilitator = Zeldin, timeslotId = 2, roomId = 2 }
+ActivityData { act = SLA201, facilitator = Banks, timeslotId = 3, roomId = 2 }
+ActivityData { act = SLA291, facilitator = Singer, timeslotId = 5, roomId = 2 }
+ActivityData { act = SLA191B, facilitator = Zeldin, timeslotId = 0, roomId = 3 }
+ActivityData { act = SLA101A, facilitator = Banks, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 5, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Singer, timeslotId = 0, roomId = 4 }
+ActivityData { act = SLA303, facilitator = Banks, timeslotId = 2, roomId = 4 }
+ActivityData { act = SLA449, facilitator = Singer, timeslotId = 3, roomId = 5 }
+Program exit.
+
+Improvement: 0, 0%, Max fit: 12.249999999999991, Prev max fit: 12.25
+Mutation rate: 0.0166772
+
+Max fit:
+ActivityData { act = SLA304, facilitator = Banks, timeslotId = 0, roomId = 0 }
+ActivityData { act = SLA394, facilitator = Tyler, timeslotId = 1, roomId = 0 }
+ActivityData { act = SLA303, facilitator = Zeldin, timeslotId = 1, roomId = 2 }
+ActivityData { act = SLA101A, facilitator = Banks, timeslotId = 2, roomId = 2 }
+ActivityData { act = SLA191B, facilitator = Zeldin, timeslotId = 5, roomId = 2 }
+ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 0, roomId = 3 }
+ActivityData { act = SLA101B, facilitator = Banks, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA291, facilitator = Zeldin, timeslotId = 4, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Shaw, timeslotId = 2, roomId = 4 }
+ActivityData { act = SLA201, facilitator = Shaw, timeslotId = 0, roomId = 5 }
+ActivityData { act = SLA449, facilitator = Shaw, timeslotId = 3, roomId = 5 }
+Program exit.
+
+Improvement: 0, 0%, Max fit: 12.249999999999991, Prev max fit: 12.25
+Mutation rate: 0.0370604
+
+Max fit:
+ActivityData { act = SLA394, facilitator = Tyler, timeslotId = 1, roomId = 0 }
+ActivityData { act = SLA304, facilitator = Glen, timeslotId = 2, roomId = 0 }
+ActivityData { act = SLA449, facilitator = Singer, timeslotId = 0, roomId = 2 }
+ActivityData { act = SLA291, facilitator = Singer, timeslotId = 1, roomId = 2 }
+ActivityData { act = SLA303, facilitator = Glen, timeslotId = 3, roomId = 2 }
+ActivityData { act = SLA191B, facilitator = Lock, timeslotId = 5, roomId = 2 }
+ActivityData { act = SLA101A, facilitator = Lock, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA191A, facilitator = Lock, timeslotId = 2, roomId = 3 }
+ActivityData { act = SLA101B, facilitator = Lock, timeslotId = 3, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Singer, timeslotId = 5, roomId = 4 }
+ActivityData { act = SLA201, facilitator = Glen, timeslotId = 4, roomId = 6 }
+Program exit.
+
+Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
+Mutation rate: 0.0218838
+
+Max fit:
+ActivityData { act = SLA394, facilitator = Singer, timeslotId = 0, roomId = 0 }
+ActivityData { act = SLA304, facilitator = Glen, timeslotId = 5, roomId = 0 }
+ActivityData { act = SLA291, facilitator = Zeldin, timeslotId = 0, roomId = 2 }
+ActivityData { act = SLA449, facilitator = Singer, timeslotId = 2, roomId = 2 }
+ActivityData { act = SLA303, facilitator = Zeldin, timeslotId = 5, roomId = 2 }
+ActivityData { act = SLA201, facilitator = Glen, timeslotId = 0, roomId = 3 }
+ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA101A, facilitator = Glen, timeslotId = 2, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Singer, timeslotId = 1, roomId = 4 }
+ActivityData { act = SLA101B, facilitator = Zeldin, timeslotId = 3, roomId = 5 }
+ActivityData { act = SLA191B, facilitator = Glen, timeslotId = 4, roomId = 5 }
+Program exit.
+
+Improvement: 0, 0%, Max fit: 12.25, Prev max fit: 12.25
+Mutation rate: 0.0370604
+
+Max fit:
+ActivityData { act = SLA394, facilitator = Singer, timeslotId = 2, roomId = 0 }
+ActivityData { act = SLA304, facilitator = Banks, timeslotId = 3, roomId = 0 }
+ActivityData { act = SLA303, facilitator = Zeldin, timeslotId = 0, roomId = 2 }
+ActivityData { act = SLA101A, facilitator = Banks, timeslotId = 2, roomId = 2 }
+ActivityData { act = SLA201, facilitator = Zeldin, timeslotId = 3, roomId = 2 }
+ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 5, roomId = 2 }
+ActivityData { act = SLA191B, facilitator = Banks, timeslotId = 0, roomId = 3 }
+ActivityData { act = SLA101B, facilitator = Banks, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA291, facilitator = Singer, timeslotId = 5, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Singer, timeslotId = 0, roomId = 4 }
+ActivityData { act = SLA449, facilitator = Tyler, timeslotId = 4, roomId = 4 }
+Program exit.
+
+Process finished with exit code 0.
+
+Improvement: 0, 0%, Max fit: 12.2, Prev max fit: 12.2
+Mutation rate: 0.0508373
+
+Max fit:
+ActivityData { act = SLA304, facilitator = Shaw, timeslotId = 1, roomId = 0 }
+ActivityData { act = SLA394, facilitator = Tyler, timeslotId = 3, roomId = 1 }
+ActivityData { act = SLA291, facilitator = Lock, timeslotId = 1, roomId = 2 }
+ActivityData { act = SLA303, facilitator = Glen, timeslotId = 3, roomId = 2 }
+ActivityData { act = SLA449, facilitator = Shaw, timeslotId = 4, roomId = 2 }
+ActivityData { act = SLA101A, facilitator = Lock, timeslotId = 2, roomId = 3 }
+ActivityData { act = SLA191A, facilitator = Lock, timeslotId = 3, roomId = 3 }
+ActivityData { act = SLA101B, facilitator = Glen, timeslotId = 4, roomId = 3 }
+ActivityData { act = SLA191B, facilitator = Glen, timeslotId = 5, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Shaw, timeslotId = 0, roomId = 4 }
+ActivityData { act = SLA201, facilitator = Glen, timeslotId = 1, roomId = 6 }
+Program exit.
+
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5
+Mutation rate: 0.097535
+
+Max fit:
+ActivityData { act = SLA304, facilitator = Banks, timeslotId = 1, roomId = 0 }
+ActivityData { act = SLA394, facilitator = Tyler, timeslotId = 1, roomId = 1 }
+ActivityData { act = SLA449, facilitator = Shaw, timeslotId = 0, roomId = 2 }
+ActivityData { act = SLA303, facilitator = Banks, timeslotId = 2, roomId = 2 }
+ActivityData { act = SLA201, facilitator = Shaw, timeslotId = 3, roomId = 2 }
+ActivityData { act = SLA291, facilitator = Banks, timeslotId = 4, roomId = 2 }
+ActivityData { act = SLA191B, facilitator = Zeldin, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA101B, facilitator = Zeldin, timeslotId = 2, roomId = 3 }
+ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 3, roomId = 3 }
+ActivityData { act = SLA101A, facilitator = Zeldin, timeslotId = 4, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Shaw, timeslotId = 4, roomId = 4 }
+Program exit.
+
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5
+Mutation rate: 0.0716972
+
+Max fit:
+ActivityData { act = SLA304, facilitator = Glen, timeslotId = 0, roomId = 0 }
+ActivityData { act = SLA394, facilitator = Tyler, timeslotId = 2, roomId = 1 }
+ActivityData { act = SLA449, facilitator = Shaw, timeslotId = 0, roomId = 2 }
+ActivityData { act = SLA303, facilitator = Glen, timeslotId = 1, roomId = 2 }
+ActivityData { act = SLA291, facilitator = Zeldin, timeslotId = 3, roomId = 2 }
+ActivityData { act = SLA201, facilitator = Shaw, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 2, roomId = 3 }
+ActivityData { act = SLA101B, facilitator = Glen, timeslotId = 3, roomId = 3 }
+ActivityData { act = SLA101A, facilitator = Zeldin, timeslotId = 4, roomId = 3 }
+ActivityData { act = SLA191B, facilitator = Zeldin, timeslotId = 5, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Shaw, timeslotId = 5, roomId = 4 }
+Program exit.
+
+// Post fixed algorithm
+
+Completed Generation 100 in 13.8922 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+
+Max fit: 12.499999999999991
+ActivityData { act = SLA304, facilitator = Glen, timeslotId = 2, roomId = 1 }
+ActivityData { act = SLA101B, facilitator = Lock, timeslotId = 2, roomId = 3 }
+ActivityData { act = SLA191A, facilitator = Lock, timeslotId = 3, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Singer, timeslotId = 0, roomId = 4 }
+ActivityData { act = SLA303, facilitator = Glen, timeslotId = 3, roomId = 4 }
+ActivityData { act = SLA449, facilitator = Tyler, timeslotId = 4, roomId = 4 }
+ActivityData { act = SLA101A, facilitator = Lock, timeslotId = 1, roomId = 5 }
+ActivityData { act = SLA201, facilitator = Glen, timeslotId = 5, roomId = 5 }
+ActivityData { act = SLA191B, facilitator = Lock, timeslotId = 0, roomId = 6 }
+ActivityData { act = SLA394, facilitator = Singer, timeslotId = 1, roomId = 8 }
+ActivityData { act = SLA291, facilitator = Singer, timeslotId = 2, roomId = 8 }
+Program exit.
+
+Completed Generation 100 in 7.4089 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+
+Max fit: 12.499999999999991
+ActivityData { act = SLA304, facilitator = Tyler, timeslotId = 3, roomId = 0 }
+ActivityData { act = SLA394, facilitator = Singer, timeslotId = 5, roomId = 0 }
+ActivityData { act = SLA291, facilitator = Singer, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA201, facilitator = Banks, timeslotId = 3, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Singer, timeslotId = 0, roomId = 4 }
+ActivityData { act = SLA191A, facilitator = Glen, timeslotId = 0, roomId = 5 }
+ActivityData { act = SLA101A, facilitator = Banks, timeslotId = 1, roomId = 5 }
+ActivityData { act = SLA101B, facilitator = Glen, timeslotId = 1, roomId = 6 }
+ActivityData { act = SLA191B, facilitator = Glen, timeslotId = 2, roomId = 6 }
+ActivityData { act = SLA303, facilitator = Banks, timeslotId = 2, roomId = 8 }
+ActivityData { act = SLA449, facilitator = Singer, timeslotId = 4, roomId = 8 }
+Program exit.
+
+Completed Generation 100 in 15.0249 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+
+Max fit: 12.499999999999991
+ActivityData { act = SLA394, facilitator = Singer, timeslotId = 1, roomId = 1 }
+ActivityData { act = SLA101A, facilitator = Banks, timeslotId = 1, roomId = 3 }
+ActivityData { act = SLA191B, facilitator = Glen, timeslotId = 2, roomId = 3 }
+ActivityData { act = SLA101B, facilitator = Banks, timeslotId = 3, roomId = 3 }
+ActivityData { act = SLA191A, facilitator = Glen, timeslotId = 4, roomId = 3 }
+ActivityData { act = SLA451, facilitator = Singer, timeslotId = 2, roomId = 4 }
+ActivityData { act = SLA291, facilitator = Singer, timeslotId = 4, roomId = 4 }
+ActivityData { act = SLA201, facilitator = Glen, timeslotId = 5, roomId = 4 }
+ActivityData { act = SLA303, facilitator = Banks, timeslotId = 0, roomId = 5 }
+ActivityData { act = SLA304, facilitator = Banks, timeslotId = 2, roomId = 5 }
+ActivityData { act = SLA449, facilitator = Tyler, timeslotId = 0, roomId = 8 }
+Program exit.
+
+
+
+
