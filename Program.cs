@@ -12,7 +12,19 @@ class Program
         Console.WriteLine("Program start.");
 
         // Run genetic algorithm
-        GA();
+        var bestResult = GA();
+
+        //Bulk run GA
+        /*for (int i = 0; i < 100; i++)
+        {
+            var tempResult = GA();
+            if (tempResult.fitness > bestResult.fitness)
+                bestResult = tempResult;
+        }
+        Console.WriteLine();
+        Console.WriteLine($"Max fit: {bestResult.fitness:G5}");
+        Console.WriteLine(bestResult.schedule);
+        bestResult.schedule.Compact().ForEach(Console.WriteLine);*/
 
         Console.WriteLine("Program exit.");
     }
@@ -20,12 +32,13 @@ class Program
     //Schedule, fitness
     private Generic.PriorityQueue<Schedule, double> population;
 
-    private void GA()
+    private (double fitness, Schedule schedule) GA()
     {
         const int popSize = 500;
         const double highMutationRate = 0.01;
         const double lowMutationRate = 0.001;
-        const bool reportPerGeneration = false;
+        const bool reportPerGeneration = true;
+        const bool reportAtEnd = true;
 
         Random rand = new();
         population = new(popSize);
@@ -130,13 +143,19 @@ class Program
         } while (counter < 100 || growthPercent > 0.01);
 
         // Final results
-        Console.WriteLine();
-        Console.Write($"Max fit: {GetMostFit(out var schedule):G5}");
-        if(!reportPerGeneration)
-            Console.Write($" in {stopwatch.Elapsed.TotalMilliseconds:G6} ms");
-        Console.WriteLine();
-        // Console.WriteLine(schedule);
-        schedule.Compact().ForEach(Console.WriteLine);
+        var endMaxFit = GetMostFit(out var schedule);
+        if (reportAtEnd)
+        {
+            Console.WriteLine();
+            Console.Write($"Max fit: {endMaxFit:G5}");
+            if (!reportPerGeneration)
+                Console.Write($" in {stopwatch.Elapsed.TotalMilliseconds:G6} ms");
+            Console.WriteLine();
+            // Console.WriteLine(schedule);
+            schedule.Compact().ForEach(Console.WriteLine);
+        }
+
+        return (endMaxFit, schedule);
     }
 
     private double GetMostFit(out Schedule schedule)
