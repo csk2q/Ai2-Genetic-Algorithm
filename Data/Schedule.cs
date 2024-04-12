@@ -224,8 +224,8 @@ public class Schedule
         {
             // Track facilitator load per timeslot
             Dictionary<Facilitator, int> facilitatorLoadTimeslot = [];
-            foreach (var faclitator in Enum.GetValues<Facilitator>())
-                facilitatorLoadTimeslot[faclitator] = 0;
+            foreach (var facilitator in Enum.GetValues<Facilitator>())
+                facilitatorLoadTimeslot[facilitator] = 0;
 
             // For every room
             for (int roomIndex = 0; roomIndex < allSlots.Length; roomIndex++)
@@ -236,12 +236,13 @@ public class Schedule
                     // Increment facilitator load
                     facilitatorLoadTimeslot[slot.facilitator] += 1;
 
+                    // Keep track of mappings
                     activityToTimeSlot.Add(slot.activity, (TimeSlot)timeslotId);
                     activityToRoom.Add(slot.activity, Rooms[roomIndex]);
                 }
             }
 
-            // Facilitator load:
+            // Facilitator load per-timeslot:
             // ◦ Activity facilitator is scheduled for only 1 activity in this time slot: + 0.2
             // ◦ Activity facilitator is scheduled for more than one activity at the same time: - 0.2
             foreach (var activityCount in facilitatorLoadTimeslot.Values)
@@ -254,29 +255,24 @@ public class Schedule
         }
 
 
-        // Facilitator load:
-        // ◦ Activity facilitator is scheduled for only 1 activity in this time slot: + 0.2
-        // ◦ Activity facilitator is scheduled for more than one activity at the same time: - 0.2
+        // Total Facilitator load:
         // ◦ Facilitator is scheduled to oversee more than 4 activities total: -0.5
-        //
         // ◦ Facilitator is scheduled to oversee 1 or 2 activities*: -0.4
         //      ▪ Exception: Dr. Tyler is committee chair and has other demands on his time.
         //          *No penalty if he’s only required to oversee < 2 activities.
-        // ◦ If any facilitator scheduled for _consecutive_ time slots: Same rules as for SLA 191 and SLA 101 in consecutive time slots—see below.
-        //      A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
-        //       ◦ In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
-        //           ▪ It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
-
+        
         // TODO Ask if facilitator checking is correct?
-        // Optimal is a faclitator teaching 3 classes and Tyler teaching 1 or 0?
+        // Optimal is a facilitator teaching 3 classes and Tyler teaching 1 or 0?
 
+        // Get list of facilitator minus Dr. Tyler
         var normalFacilitators = Enum.GetValues<Facilitator>().ToList();
         normalFacilitators.Remove(Facilitator.Tyler);
-        foreach (var faclitator in normalFacilitators)
+        
+        foreach (var facilitator in normalFacilitators)
         {
-            if (facilitatorLoad[faclitator] > 4)
+            if (facilitatorLoad[facilitator] > 4)
                 fitness -= 0.5;
-            else if (facilitatorLoad[faclitator] == 1 || facilitatorLoad[faclitator] == 2)
+            else if (facilitatorLoad[facilitator] == 1 || facilitatorLoad[facilitator] == 2)
                 fitness -= 0.4;
         }
 
@@ -285,41 +281,54 @@ public class Schedule
             fitness -= 0.4;
         else if (facilitatorLoad[Tyler] >= 2)
             fitness -= 0.4;
+        
+        // Facilitator load continued
+        // ◦ If any facilitator scheduled for _consecutive_ time slots: Same rules as for SLA 191 and SLA 101 in consecutive time slots—see below.
+        //      A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
+        //       ◦ In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
+        //           ▪ It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
+
+        //TODO implement the above check?
 
 
         // Activity-specific adjustments:
         // • The 2 sections of SLA 101 are more than 4 hours apart: + 0.5
         // • Both sections of SLA 101 are in the same time slot: -0.5
-
+        //
         // • The 2 sections of SLA 191 are more than 4 hours apart: + 0.5
         // • Both sections of SLA 191 are in the same time slot: -0.5
-
+        //
         // • A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
         //   ◦ In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
         //      ▪ It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
-
+        //
         // • A section of SLA 191 and a section of SLA 101 are taught separated by 1 hour (e.g., 10 AM & 12:00 Noon): + 0.25
         // • A section of SLA 191 and a section of SLA 101 are taught in the same time slot: -0.25
 
+        // Check time difference between parts A&B of SLA101
         var SLA101Diff = TimeDiff(activityToTimeSlot[SLA101A], activityToTimeSlot[SLA101B]);
         if (SLA101Diff > 4)
             fitness += 0.5;
         else if (SLA101Diff == 0)
             fitness -= 0.5;
 
+        // Check time difference between parts A&B of SLA191
         var SLA191Diff = TimeDiff(activityToTimeSlot[SLA191A], activityToTimeSlot[SLA191B]);
         if (SLA191Diff > 4)
             fitness += 0.5;
         else if (SLA191Diff == 0)
             fitness -= 0.5;
 
+        // Calculate time differences between SLA191A/B and SLA101A/B
         var SLA191Ato101ADiff = TimeDiff(activityToTimeSlot[SLA191A], activityToTimeSlot[SLA101A]);
         var SLA191Ato101BDiff = TimeDiff(activityToTimeSlot[SLA191A], activityToTimeSlot[SLA101B]);
         var SLA191Bto101ADiff = TimeDiff(activityToTimeSlot[SLA191B], activityToTimeSlot[SLA101A]);
         var SLA191Bto101BDiff = TimeDiff(activityToTimeSlot[SLA191B], activityToTimeSlot[SLA101B]);
 
+        // Lambda function for calculating the difference and fitness adjustment
         var Check191to101 = (int timeDiff, Activity A, Activity B) =>
         {
+            // A time difference of one means they are sequential
             if (timeDiff == 1)
             {
                 if (activityToRoom[A].name.StartsWith("Roman"))
@@ -337,14 +346,17 @@ public class Schedule
                         fitness -= 0.4;
                 }
             }
-            else if (timeDiff == 2) // Two means one hour gap between classes.
+            // A time difference of two means one hour gap between classes.
+            else if (timeDiff == 2) 
             {
                 fitness += 0.25;
             }
+            // A time difference of zero means the classes are in the same timeslot.
             else if (timeDiff == 0)
                 fitness -= 0.25;
         };
 
+        // Run lambda function for all combinations
         Check191to101(SLA191Ato101ADiff, SLA191A, SLA101A);
         Check191to101(SLA191Ato101BDiff, SLA191A, SLA101B);
         Check191to101(SLA191Bto101ADiff, SLA191B, SLA101A);
@@ -353,6 +365,7 @@ public class Schedule
         return fitness;
     }
 
+    // Gets the difference in hour between two timeslots
     private int TimeDiff(TimeSlot start, TimeSlot end)
     {
         return Math.Abs(start - end);
