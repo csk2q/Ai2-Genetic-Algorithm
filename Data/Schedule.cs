@@ -54,35 +54,43 @@ public class Schedule
         return sch;
     }
 
-    public static List<ActivityData> Reproduce(in Schedule father, in Schedule mother, in Random random)
+    public static List<List<ActivityData>> Reproduce(in Schedule father, in Schedule mother, in Random random)
     {
+        // Set up
+        // The -1 is to ensure we do not just duplicate the father
         int splitIndex = random.Next(0, Activities.Count - 1);
         var fatherSimple = father.Compact();
         var motherSimple = mother.Compact();
 
-        Dictionary<string, ActivityData> childDictionary = [];
-
-        foreach (var fatherData in fatherSimple[..splitIndex])
+        Dictionary<string, ActivityData> sonDictionary = [];
+        Dictionary<string, ActivityData> daughterDictionary = [];
+        
+        // Add data from father
+        for (int i = 0; i < fatherSimple.Count; i++)
         {
-            childDictionary.Add(fatherData.act.name, fatherData);
+            if (i <= splitIndex)
+                sonDictionary.Add(fatherSimple[i].act.name, fatherSimple[i]);
+            else
+                daughterDictionary.Add(fatherSimple[i].act.name, fatherSimple[i]);
         }
 
-        for (int i = 0; i < Activities.Count - splitIndex;)
+        // Add rest of data from mother
+        foreach (var motherData in motherSimple)
         {
-            foreach (var motherData in motherSimple)
-            {
-                if (childDictionary.TryAdd(motherData.act.name, motherData))
-                    i++;
-            }
+            _ = sonDictionary.TryAdd(motherData.act.name, motherData);
+            _ = daughterDictionary.TryAdd(motherData.act.name, motherData);
         }
 
-        var childSimple = childDictionary.Values.ToList();
+        var sonSimple = sonDictionary.Values.ToList();
+        var daughterSimple = daughterDictionary.Values.ToList();
 
         // Activity count should be unchanged.
-        Debug.Assert(childSimple.Count == Activities.Count,
-            $"Activity count is incorrect! Expected {Activities.Count} but got {childSimple.Count}");
+        Debug.Assert(sonSimple.Count == Activities.Count,
+            $"Activity count for son is incorrect! Expected {Activities.Count} but got {sonSimple.Count}");
+        Debug.Assert(daughterSimple.Count == Activities.Count,
+            $"Activity count for son is incorrect! Expected {Activities.Count} but got {daughterSimple.Count}");
 
-        return childSimple;
+        return [sonSimple, daughterSimple];
     }
 
     public static List<ActivityData> Mutate(List<ActivityData> activityData, in Random random)
@@ -154,16 +162,16 @@ public class Schedule
 
         // For each activity, fitness starts at 0.
         double fitness = 0;
-        
+
         //Facilitator load data
         Dictionary<Facilitator, int> facilitatorLoad = [];
         foreach (var faclitator in Enum.GetValues<Facilitator>())
             facilitatorLoad[faclitator] = 0;
-        
+
         //Mapping data
         Dictionary<Activity, TimeSlot> activityToTimeSlot = [];
         Dictionary<Activity, Room> activityToRoom = [];
-        
+
 
         // For every room
         for (int roomIndex = 0; roomIndex < allSlots.Length; roomIndex++)
@@ -175,8 +183,8 @@ public class Schedule
             {
                 // Activity is scheduled at the same time in the same room as another of the activities: -0.5
                 // Eg: 2 activities in the same room is -1.0 to fitness
-                if(slots.Count > 0)
-                    fitness -= slots.Count * 0.5;
+                if (slots.Count > 0)
+                    fitness -= (slots.Count - 1) * 0.5;
 
                 //For each slot in the timeslot
                 foreach (var slot in slots)
@@ -214,6 +222,7 @@ public class Schedule
         //For every timeslot
         for (int timeslotId = 0; timeslotId < TimeSlotCount; timeslotId++)
         {
+            // Track facilitator load per timeslot
             Dictionary<Facilitator, int> facilitatorLoadTimeslot = [];
             foreach (var faclitator in Enum.GetValues<Facilitator>())
                 facilitatorLoadTimeslot[faclitator] = 0;
@@ -224,6 +233,7 @@ public class Schedule
                 //For each slot in the timeslot
                 foreach (var slot in allSlots[roomIndex][timeslotId])
                 {
+                    // Increment facilitator load
                     facilitatorLoadTimeslot[slot.facilitator] += 1;
 
                     activityToTimeSlot.Add(slot.activity, (TimeSlot)timeslotId);

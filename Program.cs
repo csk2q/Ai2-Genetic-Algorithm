@@ -15,14 +15,14 @@ class Program
         Random rand = new();
         int randCounter = 0;
         Schedule schdule = null;
-        
+
         double storedFitness = double.MinValue;
         uint counter = 0;
         while (counter < 100000)
         {
             var tempSchdule = Schedule.RandomizedSchedule(rand);
             var tempFit = tempSchdule.Fitness();
-        
+
             if (tempFit > storedFitness)
             {
                 storedFitness = tempFit;
@@ -47,23 +47,27 @@ class Program
         Console.WriteLine();
         Console.WriteLine(schdule);
         Console.WriteLine(schdule!.Fitness());*/
-        
+
         GA();
-        
+
 
         Console.WriteLine("Program exit.");
     }
 
     //Schedule, fitness
     private Generic.PriorityQueue<Schedule, double> population;
+
     private void GA()
     {
         const int popSize = 500;
-        
+        const double highMutationRate = 0.01;
+        const double lowMutationRate = 0.001;
+        const bool reportPerGeneration = false;
+
         Random rand = new();
         population = new(popSize);
-        double mutationRate = 0.01; // 1%
-        
+        double mutationRate = 0.01;
+
         //Create first gen
         for (int i = 0; i < popSize; i++)
         {
@@ -71,88 +75,112 @@ class Program
             population.Enqueue(sch, sch.Fitness());
         }
 
-        //Evaluation > Reproduction > Crossover > Mutation
+        
+        // Start timer
         Stopwatch stopwatch = Stopwatch.StartNew();
-        ulong fullCounter = 0;
+        
+        //Set up values
         int counter = 0;
         var growthPercent = double.MinValue;
         double lastMaxFit = GetMostFit(out _);
+        List<Schedule> children = new List<Schedule>(popSize / 2);
+        
+        // Evaluation > Reproduction > Crossover > Mutation
         do
         {
-            //Remove least fit
-            population.Dequeue();
-            
+            //Remove least fit half of population
+            for (int i = 0; i < popSize / 2; i++)
+                population.Dequeue();
+
+            // Remove old data
+            children.Clear();
+
             // Reproduce / Crossover
-            var popCount = population._nodes.Length;
-            var father = population._nodes[rand.Next(population._size)].Element;
-            var mother = population._nodes[rand.Next(population._size)].Element;
-            var child = Schedule.Reproduce(father, mother, rand);
-            
-            // Mutate
-            if (rand.NextDouble() < mutationRate)
+            while (children.Count < popSize / 2)
             {
-                child = Schedule.Mutate(child, rand);
-            }
-            
-            // Add to population
-            var childSchedule = Schedule.Expand(child);
-            population.Enqueue(childSchedule, childSchedule.Fitness());
+                var popCount = population._nodes.Length;
+                var father = population._nodes[rand.Next(population._size)].Element;
+                var mother = population._nodes[rand.Next(population._size)].Element;
+                var newChildren = Schedule.Reproduce(father, mother, rand);
 
-            fullCounter++;
-            counter++;
-            if (counter > 100)
-            {
-                rand = new Random();
-                counter = 0;
-            }
-
-            if (fullCounter % popSize == popSize - 1)
-            {
-                //Evaluate
-                var maxFit = GetMostFit(out _);
-
-                if (lastMaxFit == 0)
+                // Mutate
+                for (int i = 0; i < newChildren.Count; i++)
                 {
-                    Console.WriteLine("Avoiding divide by zero!");
-                    lastMaxFit = -0.1;
+                    if (rand.NextDouble() < mutationRate)
+                        newChildren[i] = Schedule.Mutate(newChildren[i], rand);
                 }
-                
-                growthPercent = (maxFit - lastMaxFit) / Math.Abs(lastMaxFit);
 
-                
+                // Store new children
+                foreach (var newChild in newChildren)
+                    children.Add(Schedule.Expand(newChild));
+            }
+
+            // Add new children to the population
+            foreach (var child in children)
+            {
+                population.Enqueue(child, child.Fitness());
+            }
+
+            //Counter work
+            counter++;
+
+            // Reseed random occasionally 
+            if (counter % 10 == 0)
+                rand = new Random();
+
+            // Evaluate generation
+            var maxFit = GetMostFit(out _);
+            growthPercent = (maxFit - lastMaxFit) / lastMaxFit;
+            
+            if (reportPerGeneration)
+            {
+                // Stop timer to enable reading
                 stopwatch.Stop();
-                Console.WriteLine($"Completed Generation {fullCounter/popSize:G6} in {stopwatch.Elapsed.TotalMilliseconds:G6} ms");
-                Console.WriteLine($"Improvement: {maxFit - lastMaxFit:G6}, {growthPercent:G6}%, Max fit: {maxFit}, Prev max fit: {lastMaxFit:G6}");
-
-                // Reduce mutation rate if improving
-                if (growthPercent > 0)
-                    mutationRate *= 0.9;
-                Console.WriteLine($"Mutation rate: {mutationRate:G6}");
-
-                if (growthPercent < 0.01 && fullCounter/popSize > 100)
-                    break;
                 
-                lastMaxFit = maxFit;
-                stopwatch.Restart();
+                //Report generation improvement
+                Console.WriteLine($"Completed Generation {counter} in {stopwatch.Elapsed.TotalMilliseconds:G6} ms");
+                Console.WriteLine(
+                    $"Improvement: {maxFit - lastMaxFit:G6}, {growthPercent:G3}%, Max fit: {maxFit:G7}, Prev max fit: {lastMaxFit:G7}, Mutation rate: {mutationRate:G6}");
             }
             
-        } while (true);
+            // Clean up steps
 
+            // TODO change to short bursts of mutation followed by long periods of low mutation
+            // Reduce mutation rate if improving
+            // if (growthPercent > 0)
+            //     mutationRate *= 0.9;
+
+            // Short bursts of higher mutation
+            // Values are arbitrary
+            if (counter % 20 < 4)
+                mutationRate = highMutationRate;
+            else
+                mutationRate = lowMutationRate;            
+
+            //Update last fit
+            lastMaxFit = maxFit;
+            
+            if(reportPerGeneration)
+                //Restart timer
+                stopwatch.Restart();
+            
+        } while (counter < 100 || growthPercent > 0.01);
+
+        // Final results
         Console.WriteLine();
-        Console.WriteLine("Max fit:");
-        _ = GetMostFit(out var schedule);
+        Console.Write($"Max fit: {GetMostFit(out var schedule):G5}");
+        if(!reportPerGeneration)
+            Console.Write($" in {stopwatch.Elapsed.TotalMilliseconds:G6} ms");
+        Console.WriteLine();
         // Console.WriteLine(schedule);
         schedule.Compact().ForEach(Console.WriteLine);
-        
-
-
     }
 
     private double GetMostFit(out Schedule schedule)
     {
         double maxFit = double.MinValue;
         schedule = null!;
-        
+
         foreach (var populationUnorderedItem in population.UnorderedItems)
         {
             if (populationUnorderedItem.Priority > maxFit)
@@ -164,5 +192,4 @@ class Program
 
         return maxFit;
     }
-    
 }
