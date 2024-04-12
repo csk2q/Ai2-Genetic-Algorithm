@@ -299,7 +299,7 @@ public class Schedule
         //          *No penalty if he’s only required to oversee < 2 activities.
 
         // TODO Ask if facilitator checking is correct?
-        // Optimal is a facilitator teaching 3 classes and Tyler teaching 1 or 0?
+        // Optimal is a facilitator teaching 3 or 4 classes and Tyler teaching 1 or 0?
 
         // Get list of facilitator minus Dr. Tyler
         var normalFacilitators = Enum.GetValues<Facilitator>().ToList();
