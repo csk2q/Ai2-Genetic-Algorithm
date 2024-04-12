@@ -331,18 +331,17 @@ public class Schedule
             // A time difference of one means they are sequential
             if (timeDiff == 1)
             {
+                fitness += 0.5;
+                
+                // Check if one class is in Roman or Beach and the other is not
                 if (activityToRoom[A].name.StartsWith("Roman"))
                 {
-                    if (activityToRoom[B].name.StartsWith("Roman"))
-                        fitness += 0.5;
-                    else
+                    if (!activityToRoom[B].name.StartsWith("Roman"))
                         fitness -= 0.4;
                 }
                 else if (activityToRoom[A].name.StartsWith("Beach"))
                 {
-                    if (activityToRoom[B].name.StartsWith("Beach"))
-                        fitness += 0.5;
-                    else
+                    if (!activityToRoom[B].name.StartsWith("Beach"))
                         fitness -= 0.4;
                 }
             }
