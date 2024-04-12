@@ -151,8 +151,8 @@ class Program
             if (!reportPerGeneration)
                 Console.Write($" in {stopwatch.Elapsed.TotalMilliseconds:G6} ms");
             Console.WriteLine();
-            // Console.WriteLine(schedule);
-            schedule.Compact().ForEach(Console.WriteLine);
+            Console.WriteLine(schedule);
+            // schedule.Compact().ForEach(Console.WriteLine);
         }
 
         return (endMaxFit, schedule);

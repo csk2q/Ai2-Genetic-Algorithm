@@ -418,7 +418,8 @@ public class Schedule
             lines.Add(Rooms[i].name);
             for (int j = 0; j < TimeSlotCount; j++)
             {
-                lines.Add($"\t{(TimeSlot)j}: {string.Join(", ", allSlots[i][j])}");
+                if(allSlots[i][j].Count > 0)
+                    lines.Add($"\t{(TimeSlot)j}: {string.Join(", ", allSlots[i][j])}");
             }
         }
 
