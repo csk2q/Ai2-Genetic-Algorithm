@@ -314,9 +314,7 @@ public class Schedule
         }
 
         // Penalty if Dr. Tyler is teaching more than one class.
-        if (facilitatorLoad[Tyler] > 4)
-            fitness -= 0.4;
-        else if (facilitatorLoad[Tyler] >= 2)
+        if (facilitatorLoad[Tyler] > 1)
             fitness -= 0.4;
 
 
