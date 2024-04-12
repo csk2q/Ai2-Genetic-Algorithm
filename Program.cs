@@ -11,45 +11,8 @@ class Program
     {
         Console.WriteLine("Program start.");
 
-        /*
-        Random rand = new();
-        int randCounter = 0;
-        Schedule schdule = null;
-
-        double storedFitness = double.MinValue;
-        uint counter = 0;
-        while (counter < 100000)
-        {
-            var tempSchdule = Schedule.RandomizedSchedule(rand);
-            var tempFit = tempSchdule.Fitness();
-
-            if (tempFit > storedFitness)
-            {
-                storedFitness = tempFit;
-                schdule = tempSchdule;
-                // Console.WriteLine();
-                Console.WriteLine(storedFitness);
-                counter = 0;
-            }
-            else
-            {
-                // Console.Write('*');
-                counter++;
-            }
-
-            // Reseed random after many uses
-            if (++randCounter > 1000)
-            {
-                randCounter = 0;
-                rand = new Random();
-            }
-        }
-        Console.WriteLine();
-        Console.WriteLine(schdule);
-        Console.WriteLine(schdule!.Fitness());*/
-
+        // Run genetic algorithm
         GA();
-
 
         Console.WriteLine("Program exit.");
     }
@@ -83,7 +46,7 @@ class Program
         int counter = 0;
         var growthPercent = double.MinValue;
         double lastMaxFit = GetMostFit(out _);
-        List<Schedule> children = new List<Schedule>(popSize / 2);
+        HashSet<Schedule> children = new HashSet<Schedule>(popSize / 2);
         
         // Evaluation > Reproduction > Crossover > Mutation
         do
@@ -191,5 +154,45 @@ class Program
         }
 
         return maxFit;
+    }
+
+    // Pure random fishing for schedules
+    private void RandomFishing()
+    {
+       Random rand = new();
+       int randCounter = 0;
+       Schedule schdule = null;
+
+       double storedFitness = double.MinValue;
+       uint counter = 0;
+       while (counter < 100000)
+       {
+           var tempSchdule = Schedule.RandomizedSchedule(rand);
+           var tempFit = tempSchdule.Fitness();
+
+           if (tempFit > storedFitness)
+           {
+               storedFitness = tempFit;
+               schdule = tempSchdule;
+               // Console.WriteLine();
+               Console.WriteLine(storedFitness);
+               counter = 0;
+           }
+           else
+           {
+               // Console.Write('*');
+               counter++;
+           }
+
+           // Reseed random after many uses
+           if (++randCounter > 1000)
+           {
+               randCounter = 0;
+               rand = new Random();
+           }
+       }
+       Console.WriteLine();
+       Console.WriteLine(schdule);
+       Console.WriteLine(schdule!.Fitness());
     }
 }
