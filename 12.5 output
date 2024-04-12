@@ -1,341 +1,79 @@
-"/Users/mcbabac/Projects/Ai2 Genetic Algorithm/bin/Release/net8.0/Ai2 Genetic Algorithm"
-Program start.
-Completed Generation 0 in 76.0052 ms
-Improvement: 0, 0%, Max fit: 5.899999999999995, Prev max fit: 5.9
-Mutation rate: 0.2
-Completed Generation 1 in 60.4287 ms
-Improvement: 0.6, 0.101695%, Max fit: 6.5, Prev max fit: 5.9
-Mutation rate: 0.18
-Completed Generation 2 in 54.905 ms
-Improvement: 0.3, 0.0461538%, Max fit: 6.799999999999997, Prev max fit: 6.5
-Mutation rate: 0.162
-Completed Generation 3 in 60.4294 ms
-Improvement: 0.35, 0.0514706%, Max fit: 7.149999999999997, Prev max fit: 6.8
-Mutation rate: 0.1458
-Completed Generation 4 in 64.3763 ms
-Improvement: 0, 0%, Max fit: 7.149999999999997, Prev max fit: 7.15
-Mutation rate: 0.1458
-Completed Generation 5 in 56.024 ms
-Improvement: 0.2, 0.027972%, Max fit: 7.349999999999999, Prev max fit: 7.15
-Mutation rate: 0.13122
-Completed Generation 6 in 62.9724 ms
-Improvement: 0.3, 0.0408163%, Max fit: 7.65, Prev max fit: 7.35
-Mutation rate: 0.118098
-Completed Generation 7 in 69.0337 ms
-Improvement: 0.55, 0.0718954%, Max fit: 8.199999999999996, Prev max fit: 7.65
-Mutation rate: 0.106288
-Completed Generation 8 in 65.275 ms
-Improvement: 0, 0%, Max fit: 8.199999999999996, Prev max fit: 8.2
-Mutation rate: 0.106288
-Completed Generation 9 in 77.3555 ms
-Improvement: 0.15, 0.0182927%, Max fit: 8.349999999999998, Prev max fit: 8.2
-Mutation rate: 0.0956594
-Completed Generation 10 in 67.6067 ms
-Improvement: 0.25, 0.0299401%, Max fit: 8.6, Prev max fit: 8.35
-Mutation rate: 0.0860934
-Completed Generation 11 in 74.256 ms
-Improvement: 0.1, 0.0116279%, Max fit: 8.7, Prev max fit: 8.6
-Mutation rate: 0.0774841
-Completed Generation 12 in 71.1374 ms
-Improvement: 0.45, 0.0517241%, Max fit: 9.149999999999993, Prev max fit: 8.7
-Mutation rate: 0.0697357
-Completed Generation 13 in 75.4117 ms
-Improvement: 0.8, 0.0874317%, Max fit: 9.949999999999996, Prev max fit: 9.15
-Mutation rate: 0.0627621
-Completed Generation 14 in 54.3922 ms
-Improvement: 0, 0%, Max fit: 9.949999999999996, Prev max fit: 9.95
-Mutation rate: 0.0627621
-Completed Generation 15 in 44.23 ms
-Improvement: 0, 0%, Max fit: 9.949999999999996, Prev max fit: 9.95
-Mutation rate: 0.0627621
-Completed Generation 16 in 47.5701 ms
-Improvement: 0, 0%, Max fit: 9.949999999999996, Prev max fit: 9.95
-Mutation rate: 0.0627621
-Completed Generation 17 in 42.8573 ms
-Improvement: 0, 0%, Max fit: 9.949999999999996, Prev max fit: 9.95
-Mutation rate: 0.0627621
-Completed Generation 18 in 34.1626 ms
-Improvement: 0, 0%, Max fit: 9.949999999999996, Prev max fit: 9.95
-Mutation rate: 0.0627621
-Completed Generation 19 in 39.8317 ms
-Improvement: 0.05, 0.00502513%, Max fit: 9.999999999999995, Prev max fit: 9.95
-Mutation rate: 0.0564859
-Completed Generation 20 in 39.782 ms
-Improvement: 0.1, 0.01%, Max fit: 10.099999999999996, Prev max fit: 10
-Mutation rate: 0.0508373
-Completed Generation 21 in 36.3761 ms
-Improvement: 0, 0%, Max fit: 10.099999999999996, Prev max fit: 10.1
-Mutation rate: 0.0508373
-Completed Generation 22 in 33.0002 ms
-Improvement: 0.1, 0.00990099%, Max fit: 10.19999999999999, Prev max fit: 10.1
-Mutation rate: 0.0457536
-Completed Generation 23 in 41.6369 ms
-Improvement: 0.3, 0.0294118%, Max fit: 10.499999999999995, Prev max fit: 10.2
-Mutation rate: 0.0411782
-Completed Generation 24 in 31.4146 ms
-Improvement: 0, 0%, Max fit: 10.499999999999995, Prev max fit: 10.5
-Mutation rate: 0.0411782
-Completed Generation 25 in 25.903 ms
-Improvement: 0, 0%, Max fit: 10.499999999999995, Prev max fit: 10.5
-Mutation rate: 0.0411782
-Completed Generation 26 in 18.8245 ms
-Improvement: 0, 0%, Max fit: 10.499999999999995, Prev max fit: 10.5
-Mutation rate: 0.0411782
-Completed Generation 27 in 25.7524 ms
-Improvement: 0, 0%, Max fit: 10.499999999999995, Prev max fit: 10.5
-Mutation rate: 0.0411782
-Completed Generation 28 in 22.0586 ms
-Improvement: 0.4, 0.0380952%, Max fit: 10.899999999999991, Prev max fit: 10.5
-Mutation rate: 0.0370604
-Completed Generation 29 in 21.0914 ms
-Improvement: 0, 0%, Max fit: 10.899999999999991, Prev max fit: 10.9
-Mutation rate: 0.0370604
-Completed Generation 30 in 18.6466 ms
-Improvement: 0, 0%, Max fit: 10.899999999999991, Prev max fit: 10.9
-Mutation rate: 0.0370604
-Completed Generation 31 in 22.5169 ms
-Improvement: 0.4, 0.0366972%, Max fit: 11.299999999999992, Prev max fit: 10.9
-Mutation rate: 0.0333544
-Completed Generation 32 in 28.2928 ms
-Improvement: 0, 0%, Max fit: 11.299999999999992, Prev max fit: 11.3
-Mutation rate: 0.0333544
-Completed Generation 33 in 14.7111 ms
-Improvement: 0, 0%, Max fit: 11.299999999999992, Prev max fit: 11.3
-Mutation rate: 0.0333544
-Completed Generation 34 in 15.332 ms
-Improvement: 0, 0%, Max fit: 11.299999999999992, Prev max fit: 11.3
-Mutation rate: 0.0333544
-Completed Generation 35 in 17.8705 ms
-Improvement: 0, 0%, Max fit: 11.299999999999992, Prev max fit: 11.3
-Mutation rate: 0.0333544
-Completed Generation 36 in 15.8774 ms
-Improvement: 0, 0%, Max fit: 11.299999999999992, Prev max fit: 11.3
-Mutation rate: 0.0333544
-Completed Generation 37 in 19.7034 ms
-Improvement: 0.1, 0.00884956%, Max fit: 11.399999999999993, Prev max fit: 11.3
-Mutation rate: 0.0300189
-Completed Generation 38 in 19.8775 ms
-Improvement: 0, 0%, Max fit: 11.399999999999993, Prev max fit: 11.4
-Mutation rate: 0.0300189
-Completed Generation 39 in 22.0738 ms
-Improvement: 0, 0%, Max fit: 11.399999999999993, Prev max fit: 11.4
-Mutation rate: 0.0300189
-Completed Generation 40 in 19.2461 ms
-Improvement: 0.3, 0.0263158%, Max fit: 11.699999999999992, Prev max fit: 11.4
-Mutation rate: 0.027017
-Completed Generation 41 in 20.0573 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 42 in 17.731 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 43 in 17.2334 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 44 in 21.0018 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 45 in 26.0687 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 46 in 21.5223 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 47 in 14.0816 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 48 in 14.332 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 49 in 14.4536 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 50 in 14.3677 ms
-Improvement: 0, 0%, Max fit: 11.699999999999992, Prev max fit: 11.7
-Mutation rate: 0.027017
-Completed Generation 51 in 13.9261 ms
-Improvement: 0.3, 0.025641%, Max fit: 11.999999999999991, Prev max fit: 11.7
-Mutation rate: 0.0243153
-Completed Generation 52 in 14.2986 ms
-Improvement: 0, 0%, Max fit: 11.999999999999991, Prev max fit: 12
-Mutation rate: 0.0243153
-Completed Generation 53 in 15.4505 ms
-Improvement: 0.5, 0.0416667%, Max fit: 12.499999999999991, Prev max fit: 12
-Mutation rate: 0.0218838
-Completed Generation 54 in 14.5171 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 55 in 14.2643 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 56 in 14.2065 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 57 in 14.2101 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 58 in 14.6495 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 59 in 14.5649 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 60 in 13.7001 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 61 in 14.8678 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 62 in 14.566 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 63 in 14.4775 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 64 in 14.3078 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 65 in 15.1027 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 66 in 14.3521 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 67 in 15.0864 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 68 in 14.543 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 69 in 14.7003 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 70 in 15.0765 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 71 in 15.2868 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 72 in 14.4784 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 73 in 15.6023 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 74 in 15.5927 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 75 in 15.8327 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 76 in 16.2331 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 77 in 14.9787 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 78 in 17.7143 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 79 in 22.775 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 80 in 18.035 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 81 in 20.1208 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 82 in 17.5353 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 83 in 19.9926 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 84 in 25.5695 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 85 in 14.0368 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 86 in 14.6827 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 87 in 14.5463 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 88 in 14.1841 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 89 in 13.8913 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 90 in 14.211 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 91 in 14.2038 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 92 in 14.3775 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 93 in 14.1776 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 94 in 14.3679 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 95 in 14.5129 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 96 in 14.0498 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 97 in 14.2123 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 98 in 14.5591 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 99 in 14.5737 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 100 in 14.7681 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
-Completed Generation 101 in 14.2536 ms
-Improvement: 0, 0%, Max fit: 12.499999999999991, Prev max fit: 12.5
-Mutation rate: 0.0218838
 
-Max fit:
-ActivityData { act = SLA394, facilitator = Singer, timeslotId = 0, roomId = 0 }
-ActivityData { act = SLA304, facilitator = Glen, timeslotId = 5, roomId = 0 }
-ActivityData { act = SLA291, facilitator = Zeldin, timeslotId = 0, roomId = 2 }
-ActivityData { act = SLA449, facilitator = Singer, timeslotId = 2, roomId = 2 }
-ActivityData { act = SLA303, facilitator = Zeldin, timeslotId = 5, roomId = 2 }
-ActivityData { act = SLA201, facilitator = Glen, timeslotId = 0, roomId = 3 }
-ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 1, roomId = 3 }
-ActivityData { act = SLA101A, facilitator = Glen, timeslotId = 2, roomId = 3 }
-ActivityData { act = SLA451, facilitator = Singer, timeslotId = 1, roomId = 4 }
+Max fit: 23.1
+Slater 003
+        _10AM: 
+        _11AM: 
+        _12PM: SLA394/Zeldin
+        _1PM: 
+        _2PM: 
+        _3PM: 
+Roman 216
+        _10AM: 
+        _11AM: 
+        _12PM: 
+        _1PM: 
+        _2PM: 
+        _3PM: 
+Loft 206
+        _10AM: 
+        _11AM: 
+        _12PM: 
+        _1PM: SLA201/Zeldin
+        _2PM: SLA191A/Zeldin
+        _3PM: 
+Roman 201
+        _10AM: 
+        _11AM: 
+        _12PM: 
+        _1PM: SLA291/Zeldin
+        _2PM: 
+        _3PM: 
+Loft 310
+        _10AM: 
+        _11AM: SLA101A/Zeldin
+        _12PM: SLA191B/Zeldin
+        _1PM: SLA451/Zeldin
+        _2PM: 
+        _3PM: 
+Beach 201
+        _10AM: 
+        _11AM: 
+        _12PM: SLA303/Zeldin
+        _1PM: SLA101B/Zeldin
+        _2PM: 
+        _3PM: 
+Beach 301
+        _10AM: 
+        _11AM: 
+        _12PM: 
+        _1PM: SLA304/Zeldin
+        _2PM: 
+        _3PM: 
+Logos 325
+        _10AM: 
+        _11AM: 
+        _12PM: 
+        _1PM: 
+        _2PM: 
+        _3PM: 
+Frank 119
+        _10AM: 
+        _11AM: 
+        _12PM: SLA449/Zeldin
+        _1PM: 
+        _2PM: 
+        _3PM: 
+ActivityData { act = SLA394, facilitator = Zeldin, timeslotId = 2, roomId = 0 }
+ActivityData { act = SLA201, facilitator = Zeldin, timeslotId = 3, roomId = 2 }
+ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 4, roomId = 2 }
+ActivityData { act = SLA291, facilitator = Zeldin, timeslotId = 3, roomId = 3 }
+ActivityData { act = SLA101A, facilitator = Zeldin, timeslotId = 1, roomId = 4 }
+ActivityData { act = SLA191B, facilitator = Zeldin, timeslotId = 2, roomId = 4 }
+ActivityData { act = SLA451, facilitator = Zeldin, timeslotId = 3, roomId = 4 }
+ActivityData { act = SLA303, facilitator = Zeldin, timeslotId = 2, roomId = 5 }
 ActivityData { act = SLA101B, facilitator = Zeldin, timeslotId = 3, roomId = 5 }
-ActivityData { act = SLA191B, facilitator = Glen, timeslotId = 4, roomId = 5 }
+ActivityData { act = SLA304, facilitator = Zeldin, timeslotId = 3, roomId = 6 }
+ActivityData { act = SLA449, facilitator = Zeldin, timeslotId = 2, roomId = 8 }
 Program exit.
 
 Process finished with exit code 0.
-
-Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5
-Mutation rate: 0.097535
-
-Max fit:
-ActivityData { act = SLA304, facilitator = Banks, timeslotId = 1, roomId = 0 }
-ActivityData { act = SLA394, facilitator = Tyler, timeslotId = 1, roomId = 1 }
-ActivityData { act = SLA449, facilitator = Shaw, timeslotId = 0, roomId = 2 }
-ActivityData { act = SLA303, facilitator = Banks, timeslotId = 2, roomId = 2 }
-ActivityData { act = SLA201, facilitator = Shaw, timeslotId = 3, roomId = 2 }
-ActivityData { act = SLA291, facilitator = Banks, timeslotId = 4, roomId = 2 }
-ActivityData { act = SLA191B, facilitator = Zeldin, timeslotId = 1, roomId = 3 }
-ActivityData { act = SLA101B, facilitator = Zeldin, timeslotId = 2, roomId = 3 }
-ActivityData { act = SLA191A, facilitator = Zeldin, timeslotId = 3, roomId = 3 }
-ActivityData { act = SLA101A, facilitator = Zeldin, timeslotId = 4, roomId = 3 }
-ActivityData { act = SLA451, facilitator = Shaw, timeslotId = 4, roomId = 4 }
-Program exit.
