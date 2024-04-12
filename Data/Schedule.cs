@@ -165,8 +165,8 @@ public class Schedule
 
         //Facilitator load data
         Dictionary<Facilitator, int> facilitatorLoad = [];
-        foreach (var faclitator in Enum.GetValues<Facilitator>())
-            facilitatorLoad[faclitator] = 0;
+        foreach (var facilitator in Enum.GetValues<Facilitator>())
+            facilitatorLoad[facilitator] = 0;
 
         //Mapping data
         Dictionary<Activity, TimeSlot> activityToTimeSlot = [];
@@ -182,9 +182,8 @@ public class Schedule
             foreach (var slots in allSlots[roomIndex])
             {
                 // Activity is scheduled at the same time in the same room as another of the activities: -0.5
-                // Eg: 2 activities in the same room is -1.0 to fitness
-                if (slots.Count > 0)
-                    fitness -= (slots.Count - 1) * 0.5;
+                if (slots.Count > 1)
+                    fitness -= slots.Count * 0.5;
 
                 //For each slot in the timeslot
                 foreach (var slot in slots)
@@ -270,7 +269,7 @@ public class Schedule
                 foreach (var prevSlot in previousSlots)
                     if (curSlot.facilitator == prevSlot.facilitator)
                     {
-                        fitness += 0.5;
+                        // fitness += 0.5; //If uncommented only one facilitator will be chosen
 
                         // Check if one class is in Roman or Beach and the other is not
                         if (curSlot.activity.name.StartsWith("Roman"))
