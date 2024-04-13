@@ -77,3 +77,9 @@ ActivityData { act = SLA449, facilitator = Zeldin, timeslotId = 2, roomId = 8 }
 Program exit.
 
 Process finished with exit code 0.
+
+
+NOTE: Put this on the report!
+When implementing the bonus for consecutive assignments for facilitators I noticed that because the bonus was stackable optimal solutions converged to one facilitator preforming all activates regardless of any other negatives. This "bug" resulted in fitness values of anywhere between ~15 to 23.3 with a lot of variability between runs. To fix this I decided to remove this specific bonus as I believe the behavior was not desirable nor intended.
+
+

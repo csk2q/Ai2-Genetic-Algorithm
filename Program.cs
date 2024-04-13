@@ -14,7 +14,7 @@ class Program
         // Run genetic algorithm
         var bestResult = GA();
 
-        //Bulk run GA
+        //Bulk run GA and print best result
         /*for (int i = 0; i < 100; i++)
         {
             var tempResult = GA();
@@ -64,7 +64,7 @@ class Program
         // Evaluation > Reproduction > Crossover > Mutation
         do
         {
-            //Remove least fit half of population
+            //Remove at least fit half of population
             for (int i = 0; i < popSize / 2; i++)
                 population.Dequeue();
 
@@ -121,7 +121,7 @@ class Program
             
             // Clean up steps
 
-            // TODO change to short bursts of mutation followed by long periods of low mutation
+            // Deprecated at professor's recommendation in favor of short bursts of mutation
             // Reduce mutation rate if improving
             // if (growthPercent > 0)
             //     mutationRate *= 0.9;
@@ -140,9 +140,10 @@ class Program
                 //Restart timer
                 stopwatch.Restart();
             
+            // Repeat while less than 100 generations or  
         } while (counter < 100 || growthPercent > 0.01);
 
-        // Final results
+        // Print final results
         var endMaxFit = GetMostFit(out var schedule);
         if (reportAtEnd)
         {
@@ -152,17 +153,20 @@ class Program
                 Console.Write($" in {stopwatch.Elapsed.TotalMilliseconds:G6} ms");
             Console.WriteLine();
             Console.WriteLine(schedule);
+            //Alternate display method
             // schedule.Compact().ForEach(Console.WriteLine);
         }
 
         return (endMaxFit, schedule);
     }
 
+    //Gets the most fit schedule from the population
     private double GetMostFit(out Schedule schedule)
     {
         double maxFit = double.MinValue;
         schedule = null!;
 
+        // Loop through the population while keeping track of the most fit schedule
         foreach (var populationUnorderedItem in population.UnorderedItems)
         {
             if (populationUnorderedItem.Priority > maxFit)
@@ -176,23 +180,24 @@ class Program
     }
 
     // Pure random fishing for schedules
+    // Made just for fun and not actually used by the program.
     private void RandomFishing()
     {
        Random rand = new();
        int randCounter = 0;
-       Schedule schdule = null;
+       Schedule schedule = null!;
 
        double storedFitness = double.MinValue;
        uint counter = 0;
        while (counter < 100000)
        {
-           var tempSchdule = Schedule.RandomizedSchedule(rand);
-           var tempFit = tempSchdule.Fitness();
+           var tempSchedule = Schedule.RandomizedSchedule(rand);
+           var tempFit = tempSchedule.Fitness();
 
            if (tempFit > storedFitness)
            {
                storedFitness = tempFit;
-               schdule = tempSchdule;
+               schedule = tempSchedule;
                // Console.WriteLine();
                Console.WriteLine(storedFitness);
                counter = 0;
@@ -211,7 +216,7 @@ class Program
            }
        }
        Console.WriteLine();
-       Console.WriteLine(schdule);
-       Console.WriteLine(schdule!.Fitness());
+       Console.WriteLine(schedule);
+       Console.WriteLine(schedule.Fitness());
     }
 }

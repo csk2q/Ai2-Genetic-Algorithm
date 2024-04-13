@@ -1,12 +1,14 @@
 using System.Collections.Immutable;
-
 using static Ai2_Genetic_Algorithm.Data.Facilitator;
 
 namespace Ai2_Genetic_Algorithm.Data;
 
+/*
+ * This file contains type and data definitions for the genetic algorithm to run.
+ */
+
 public static class TestData
 {
-    //Make enum? name = capacity?
     public static readonly ImmutableList<Room> Rooms = [
         new Room("Slater 003", 45),
         new Room("Roman 216", 30),
@@ -20,7 +22,7 @@ public static class TestData
     ];
 
     public static readonly ImmutableList<Activity> Activities = [
-        //NOTE: SLA100A/B is renamed to SLA101A/B since it referenced as SLA 101 A/B in the fitness function description.
+        //NOTE: SLA100A/B is renamed to SLA101A/B since it referenced as SLA101 A/B in the fitness function description.
         new Activity("SLA101A", 50, [Glen, Lock, Banks, Zeldin], [Numen, Richards]),
         new Activity("SLA101B", 50, [Glen, Lock, Banks, Zeldin], [Numen, Richards]),
         new Activity("SLA191A", 50, [Glen, Lock, Banks, Zeldin], [Numen, Richards]),

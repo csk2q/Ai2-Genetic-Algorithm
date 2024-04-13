@@ -6,6 +6,7 @@ using Data;
 using static Data.Facilitator;
 using static Data.TestData;
 
+// Slot class to hold activity & facilitator
 public class Slot(Activity activity, Facilitator facilitator)
 {
     public Activity activity = activity;
@@ -17,19 +18,16 @@ public class Slot(Activity activity, Facilitator facilitator)
     }
 }
 
+// Represents a schedule & has several related utility functions
 public class Schedule
 {
-    //Add caching of the fitness value.
-    //* Without a reliable way invalidate on change fitness cannot be cached. *//
-    // private int fitness = 0;
-
     //3D array of activities
     //Room index, TimeSlot index, List of activities
     private List<Slot>[][] allSlots;
 
-
     public Schedule()
     {
+        // Initialize arrays
         allSlots = new List<Slot>[Rooms.Count][];
         for (int i = 0; i < allSlots.Length; i++)
         {
@@ -43,6 +41,7 @@ public class Schedule
     {
         Schedule sch = new();
 
+        // Randomly assign room, timeslot, and facilitator to activities 
         foreach (var activity in TestData.Activities)
         {
             int room = rand.Next(0, sch.allSlots.Length);
@@ -54,14 +53,15 @@ public class Schedule
         return sch;
     }
 
+    // Takes two parents and crosses them creating two children
     public static List<List<ActivityData>> Reproduce(in Schedule father, in Schedule mother, in Random random)
     {
-        // Set up
+        // Data set up
+        
         // The -1 is to ensure we do not just duplicate the father
         int splitIndex = random.Next(0, Activities.Count - 1);
         var fatherSimple = father.Compact();
         var motherSimple = mother.Compact();
-
         Dictionary<string, ActivityData> sonDictionary = [];
         Dictionary<string, ActivityData> daughterDictionary = [];
 
@@ -81,6 +81,7 @@ public class Schedule
             _ = daughterDictionary.TryAdd(motherData.act.name, motherData);
         }
 
+        // Convert to expected format
         var sonSimple = sonDictionary.Values.ToList();
         var daughterSimple = daughterDictionary.Values.ToList();
 
@@ -93,10 +94,13 @@ public class Schedule
         return [sonSimple, daughterSimple];
     }
 
+    // Mutates one attribute of the given schedule randomly
     public static List<ActivityData> Mutate(List<ActivityData> activityData, in Random random)
     {
+        // Roll the dice
         int removeIndex = random.Next(0, Activities.Count);
 
+        // Select the attribute to change
         switch (random.Next(3))
         {
             case 0: // facilitator
@@ -119,6 +123,7 @@ public class Schedule
         return activityData;
     }
 
+    // Compact representation of all the data assigned to an activity
     public record ActivityData(Activity act, Facilitator facilitator, int timeslotId, int roomId);
 
     public List<ActivityData> Compact() => Compact(this);
@@ -269,7 +274,8 @@ public class Schedule
                 foreach (var prevSlot in previousSlots)
                     if (curSlot.facilitator == prevSlot.facilitator)
                     {
-                        // fitness += 0.5; //If uncommented only one facilitator will be chosen
+                        //If uncommented one facilitator will be chosen for all activities regardless of any other penalties.
+                        // fitness += 0.5; 
 
                         // Check if one class is in Roman or Beach and the other is not
                         if (curSlot.activity.name.StartsWith("Roman"))
@@ -298,8 +304,7 @@ public class Schedule
         //      ▪ Exception: Dr. Tyler is committee chair and has other demands on his time.
         //          *No penalty if he’s only required to oversee < 2 activities.
 
-        // TODO Ask if facilitator checking is correct?
-        // Optimal is a facilitator teaching 3 or 4 classes and Tyler teaching 1 or 0?
+        // To my understanding the optimal solution is a facilitator teaching 3 or 4 classes and Tyler teaching 1 or 0 classes.
 
         // Get list of facilitator minus Dr. Tyler
         var normalFacilitators = Enum.GetValues<Facilitator>().ToList();
@@ -353,7 +358,7 @@ public class Schedule
         var SLA191Bto101BDiff = TimeDiff(activityToTimeSlot[SLA191B], activityToTimeSlot[SLA101B]);
 
         // Lambda function for calculating the difference and fitness adjustment
-        var Check191to101 = (int timeDiff, Activity A, Activity B) =>
+        var Check191to101 = (int timeDiff, Activity activityA, Activity activityB) =>
         {
             // A time difference of one means they are sequential
             if (timeDiff == 1)
@@ -361,14 +366,14 @@ public class Schedule
                 fitness += 0.5;
 
                 // Check if one class is in Roman or Beach and the other is not
-                if (activityToRoom[A].name.StartsWith("Roman"))
+                if (activityToRoom[activityA].name.StartsWith("Roman"))
                 {
-                    if (!activityToRoom[B].name.StartsWith("Roman"))
+                    if (!activityToRoom[activityB].name.StartsWith("Roman"))
                         fitness -= 0.4;
                 }
-                else if (activityToRoom[A].name.StartsWith("Beach"))
+                else if (activityToRoom[activityA].name.StartsWith("Beach"))
                 {
-                    if (!activityToRoom[B].name.StartsWith("Beach"))
+                    if (!activityToRoom[activityB].name.StartsWith("Beach"))
                         fitness -= 0.4;
                 }
             }
@@ -397,28 +402,22 @@ public class Schedule
         return Math.Abs(start - end);
     }
 
-    // Runs the provided action on every timeslot for every room
-    private void ForEvery(Action<List<Slot>> action)
-    {
-        foreach (var room in allSlots)
-        {
-            foreach (var slots in room)
-            {
-                action.Invoke(slots);
-            }
-        }
-    }
-
     public override string ToString()
     {
         List<string> lines = [];
 
+        // For each room
         for (int i = 0; i < allSlots.Length; i++)
         {
+            //Print room name
             lines.Add(Rooms[i].name);
+            
+            //For each time slot
             for (int j = 0; j < TimeSlotCount; j++)
             {
+                // If timeslot is not empty
                 if(allSlots[i][j].Count > 0)
+                    // Print all activities in timeslot
                     lines.Add($"\t{(TimeSlot)j}: {string.Join(", ", allSlots[i][j])}");
             }
         }
