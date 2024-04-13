@@ -1,0 +1,227 @@
+Program start.
+Completed Generation 1 in 24.913 ms
+Improvement: 0, 0%, Max fit: 6.3, Prev max fit: 6.3, Mutation rate: 0.01
+Completed Generation 2 in 13.296 ms
+Improvement: 1.2, 0.19%, Max fit: 7.5, Prev max fit: 6.3, Mutation rate: 0.01
+Completed Generation 3 in 18.8197 ms
+Improvement: 0, 0%, Max fit: 7.5, Prev max fit: 7.5, Mutation rate: 0.01
+Completed Generation 4 in 12.6503 ms
+Improvement: 0, 0%, Max fit: 7.5, Prev max fit: 7.5, Mutation rate: 0.01
+Completed Generation 5 in 17.4198 ms
+Improvement: 0, 0%, Max fit: 7.5, Prev max fit: 7.5, Mutation rate: 0.001
+Completed Generation 6 in 11.4475 ms
+Improvement: 0.25, 0.0333%, Max fit: 7.75, Prev max fit: 7.5, Mutation rate: 0.001
+Completed Generation 7 in 11.7471 ms
+Improvement: 0.6, 0.0774%, Max fit: 8.35, Prev max fit: 7.75, Mutation rate: 0.001
+Completed Generation 8 in 15.215 ms
+Improvement: 1.05, 0.126%, Max fit: 9.4, Prev max fit: 8.35, Mutation rate: 0.001
+Completed Generation 9 in 11.2443 ms
+Improvement: 0, 0%, Max fit: 9.4, Prev max fit: 9.4, Mutation rate: 0.001
+Completed Generation 10 in 16.9977 ms
+Improvement: 0.05, 0.00532%, Max fit: 9.45, Prev max fit: 9.4, Mutation rate: 0.001
+Completed Generation 11 in 11.4845 ms
+Improvement: 0, 0%, Max fit: 9.45, Prev max fit: 9.45, Mutation rate: 0.001
+Completed Generation 12 in 18.0819 ms
+Improvement: 0.75, 0.0794%, Max fit: 10.2, Prev max fit: 9.45, Mutation rate: 0.001
+Completed Generation 13 in 14.2998 ms
+Improvement: 0.05, 0.0049%, Max fit: 10.25, Prev max fit: 10.2, Mutation rate: 0.001
+Completed Generation 14 in 13.5757 ms
+Improvement: 0.25, 0.0244%, Max fit: 10.5, Prev max fit: 10.25, Mutation rate: 0.001
+Completed Generation 15 in 19.0837 ms
+Improvement: 0.3, 0.0286%, Max fit: 10.8, Prev max fit: 10.5, Mutation rate: 0.001
+Completed Generation 16 in 12.6873 ms
+Improvement: 0.4, 0.037%, Max fit: 11.2, Prev max fit: 10.8, Mutation rate: 0.001
+Completed Generation 17 in 18.1518 ms
+Improvement: 0, 0%, Max fit: 11.2, Prev max fit: 11.2, Mutation rate: 0.001
+Completed Generation 18 in 13.1295 ms
+Improvement: 0, 0%, Max fit: 11.2, Prev max fit: 11.2, Mutation rate: 0.001
+Completed Generation 19 in 17.1854 ms
+Improvement: 0, 0%, Max fit: 11.2, Prev max fit: 11.2, Mutation rate: 0.001
+Completed Generation 20 in 12.7793 ms
+Improvement: 0.15, 0.0134%, Max fit: 11.35, Prev max fit: 11.2, Mutation rate: 0.001
+Completed Generation 21 in 13.8719 ms
+Improvement: 0.75, 0.0661%, Max fit: 12.1, Prev max fit: 11.35, Mutation rate: 0.01
+Completed Generation 22 in 16.8351 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.01
+Completed Generation 23 in 13.0246 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.01
+Completed Generation 24 in 17.4358 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.01
+Completed Generation 25 in 12.5356 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.001
+Completed Generation 26 in 21.3805 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.001
+Completed Generation 27 in 14.5375 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.001
+Completed Generation 28 in 14.2908 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.001
+Completed Generation 29 in 16.6139 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.001
+Completed Generation 30 in 13.4798 ms
+Improvement: 0, 0%, Max fit: 12.1, Prev max fit: 12.1, Mutation rate: 0.001
+Completed Generation 31 in 19.5375 ms
+Improvement: 0.1, 0.00826%, Max fit: 12.2, Prev max fit: 12.1, Mutation rate: 0.001
+Completed Generation 32 in 14.4316 ms
+Improvement: 0, 0%, Max fit: 12.2, Prev max fit: 12.2, Mutation rate: 0.001
+Completed Generation 33 in 18.1811 ms
+Improvement: 0.3, 0.0246%, Max fit: 12.5, Prev max fit: 12.2, Mutation rate: 0.001
+Completed Generation 34 in 14.6575 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 35 in 19.2966 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 36 in 14.251 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 37 in 13.3748 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 38 in 18.9246 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 39 in 15.3565 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 40 in 22.0615 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 41 in 14.6886 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 42 in 19.7126 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 43 in 13.6376 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 44 in 15.5744 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 45 in 16.7368 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 46 in 14.7993 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 47 in 18.92 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 48 in 14.3132 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 49 in 18.8738 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 50 in 14.3659 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 51 in 14.6095 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 52 in 16.5831 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 53 in 14.2654 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 54 in 16.4282 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 55 in 14.5469 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 56 in 18.3826 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 57 in 14.1295 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 58 in 13.9793 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 59 in 18.817 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 60 in 14.4153 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 61 in 17.1027 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 62 in 13.9743 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 63 in 17.3275 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 64 in 13.6372 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 65 in 17.428 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 66 in 13.275 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 67 in 14.0287 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 68 in 19.781 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 69 in 36.8746 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 70 in 18.0299 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 71 in 12.9294 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 72 in 18.1421 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 73 in 13.7604 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 74 in 12.7948 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 75 in 15.8583 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 76 in 13.9089 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 77 in 17.2516 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 78 in 13.1195 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 79 in 16.4184 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 80 in 12.6066 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 81 in 11.6909 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 82 in 14.5609 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 83 in 12.7126 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 84 in 15.8929 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.01
+Completed Generation 85 in 12.4918 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 86 in 16.9704 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 87 in 11.6358 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 88 in 12.7067 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 89 in 12.7852 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 90 in 12.6872 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 91 in 16.0928 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 92 in 12.7546 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 93 in 16.8255 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 94 in 11.9718 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 95 in 14.9585 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 96 in 9.1536 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 97 in 7.4405 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 98 in 10.6141 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 99 in 7.5762 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+Completed Generation 100 in 10.2092 ms
+Improvement: 0, 0%, Max fit: 12.5, Prev max fit: 12.5, Mutation rate: 0.001
+
+Max fit: 12.5
+Slater 003
+Roman 216
+Loft 206
+        _1PM: SLA303/Zeldin
+        _2PM: SLA304/Tyler
+        _3PM: SLA191B/Lock
+Roman 201
+        _10AM: SLA291/Zeldin
+        _12PM: SLA201/Zeldin
+        _2PM: SLA101A/Lock
+Loft 310
+        _12PM: SLA451/Singer
+Beach 201
+        _11AM: SLA449/Singer
+Beach 301
+        _11AM: SLA101B/Zeldin
+Logos 325
+Frank 119
+        _10AM: SLA191A/Lock
+        _2PM: SLA394/Singer
+Program exit.
+
+Process finished with exit code 0.
+

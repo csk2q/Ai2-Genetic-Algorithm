@@ -1,4 +1,7 @@
 
+This output was generated with the +0.5 bonus for consecutive classes 
+
+
 Max fit: 23.1
 Slater 003
         _10AM: 
