@@ -34,12 +34,14 @@ class Program
 
     private (double fitness, Schedule schedule) GA()
     {
+        // Constants
         const int popSize = 500;
         const double highMutationRate = 0.01;
         const double lowMutationRate = 0.001;
         const bool reportPerGeneration = true;
         const bool reportAtEnd = true;
 
+        // Variables
         Random rand = new();
         population = new(popSize);
         double mutationRate = 0.01;
@@ -51,7 +53,6 @@ class Program
             population.Enqueue(sch, sch.Fitness());
         }
 
-        
         // Start timer
         Stopwatch stopwatch = Stopwatch.StartNew();
         
